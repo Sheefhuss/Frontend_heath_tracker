@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; // *** REMOVED useEffect ***
 
-const BACKEND_URL = 'http://localhost:5000'; 
+const BACKEND_URL = 'https://innovative-project-health-tracker-backend.onrender.com'; 
 
 // Helper to generate User ID (Must match the logic in App.js)
 const generateUserId = (userName) => {
@@ -115,4 +115,5 @@ function UserProfile({ onProfileSave, initialData }) {
     </div>
   );
 }
+
 export default UserProfile;
