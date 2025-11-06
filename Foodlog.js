@@ -12,7 +12,7 @@ function FoodLog({ userId }) {
     }
     
     try {
-      const response = await fetch('http://localhost:5000/api/foodlog/add', {
+      const response = await fetch('https://innovative-project-health-tracker-backend.onrender.com/api/foodlog/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ foodItem: foodItem.toLowerCase(), grams: Number(grams), mealType, userId }) 
@@ -56,5 +56,6 @@ function FoodLog({ userId }) {
     </div>
   );
 }
+
 
 export default FoodLog;
