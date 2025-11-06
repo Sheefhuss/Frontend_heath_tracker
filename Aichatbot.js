@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
-const BACKEND_URL = 'http://localhost:5000'; 
+const BACKEND_URL = 'https://innovative-project-health-tracker-backend.onrender.com'; 
 const AI_BACKEND_URL = `${BACKEND_URL}/api/ai/chat`; 
 
 function AiChatbot({ userProfile, userId }) { 
@@ -211,5 +211,6 @@ const chatStyles = {
     fontWeight: 'bold',
   }
 };
+
 
 export default AiChatbot;
