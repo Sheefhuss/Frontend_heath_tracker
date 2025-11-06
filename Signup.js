@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const BACKEND_URL = 'http://localhost:5000'; 
+const BACKEND_URL = 'https://innovative-project-health-tracker-backend.onrender.com'; 
 
 function Signup({ onFormSwitch }) { 
   const [name, setName] = useState('');
@@ -59,4 +59,5 @@ function Signup({ onFormSwitch }) {
     </div>
   );
 }
+
 export default Signup;
