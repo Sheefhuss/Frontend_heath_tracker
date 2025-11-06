@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
-const BACKEND_URL = 'https://innovative-project-health-tracker-backend.onrender.com'; 
+const BACKEND_URL = 'http://localhost:5000'; 
 const WATER_GOAL_LITERS_PER_KG = 0.033;
 
 const BarChart = ({ data, goal }) => {
@@ -316,8 +316,7 @@ function HealthDashboard({ userProfile, userId }) {
   }
 
   const waterGoalLiters = weight ? (weight * WATER_GOAL_LITERS_PER_KG).toFixed(2) : 'N/A'; 
-  const waterGoalMl = waterGoalLiters !== 'N/A' ? waterGoalLiters * 1000 : 0;
-  
+
   const waterIntakeLiters = (waterIntakeMl / 1000).toFixed(2);
   const waterIntakeGlasses = Math.floor(waterIntakeLiters * 4);
   const waterGoalGlasses = Math.floor(waterGoalLiters * 4);
@@ -718,6 +717,5 @@ const styles = {
     marginTop: '40px',
   }
 };
-
 
 export default HealthDashboard;
