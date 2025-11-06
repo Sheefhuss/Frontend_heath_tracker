@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
-const BACKEND_URL = 'http://localhost:5000'; 
+const BACKEND_URL = 'https://innovative-project-health-tracker-backend.onrender.com';
 const WATER_GOAL_LITERS_PER_KG = 0.033;
 
 const BarChart = ({ data, goal }) => {
@@ -719,3 +719,4 @@ const styles = {
 };
 
 export default HealthDashboard;
+
