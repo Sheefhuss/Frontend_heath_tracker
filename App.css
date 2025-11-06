@@ -1,0 +1,53 @@
+/* Body aur Root level styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f6; /* Light, pleasant background */
+}
+
+/* App container */
+.App {
+  min-height: 100vh;
+  text-align: center; /* Forms ko center karne ke liye */
+}
+
+/* Link and Button Hover Effects */
+button {
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+  filter: brightness(110%);
+  transform: translateY(-1px);
+}
+
+/* Form Inputs Styling */
+input, select {
+    border: 1px solid #ccc !important;
+    box-sizing: border-box; /* Padding aur border width ko maintain karein */
+}
+input:focus, select:focus {
+    border-color: #3498db !important;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+
+/* BMI Category Colors - For HealthDashboard.js */
+.bmi-underweight {
+  color: #f39c12; /* Orange */
+}
+
+.bmi-healthy {
+  color: #2ecc71; /* Green */
+}
+
+.bmi-overweight {
+  color: #e67e22; /* Darker Orange */
+}
+
+.bmi-obese {
+  color: #e74c3c; /* Red */
+}
