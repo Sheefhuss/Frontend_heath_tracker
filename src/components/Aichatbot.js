@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
-const BACKEND_URL = 'https://innovative-project-health-tracker-backend.onrender.com'; 
+const BACKEND_URL = 'https://innovative-project-health-tracker-backend-qa58.onrender.com'; 
 const AI_BACKEND_URL = `${BACKEND_URL}/api/ai/chat`; 
 
 function AiChatbot({ userProfile, userId }) { 
