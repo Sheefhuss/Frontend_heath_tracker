@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// Core components
 import Signup from './components/Signup'; 
 import Login from './components/Login'; 
 import UserProfile from './components/Userprofile.js'; 
 import FoodLog from './components/Foodlog.js'; 
 import HealthDashboard from './components/HealthDashboard';
-// New Feature components
-import AiChatbot from './components/Aichatbot.js'; // Using the disk name Aichatbot.js to resolve the error
+import AiChatbot from './components/Aichatbot.js'; 
 import FloatingChatButton from './components/FloatingChatButton.js';
 import './App.css'; 
 
@@ -45,7 +43,6 @@ function App() {
     setCurrentForm('dashboard'); 
   }
   
-  // Personalized Reminder Logic
   useEffect(() => {
     if (isLoggedIn && userProfileData && userProfileData.name) {
       const { name, weight, goal } = userProfileData;
@@ -62,7 +59,6 @@ function App() {
     }
   }, [isLoggedIn, userProfileData]);
 
-
   const NavBar = () => (
     <nav style={navStyles.nav}>
       <h3 style={{...navStyles.link, fontWeight: '900', color: '#FFF', fontSize: '20px'}}>FITNESS TRACKER</h3>
@@ -71,7 +67,6 @@ function App() {
         <>
           <button style={navStyles.button} onClick={() => toggleForm('dashboard')}>Dashboard</button>
           <button style={navStyles.button} onClick={() => toggleForm('foodlog')}>Log Meal</button>
-          {/* AI Chat button removed from navbar, now floating */}
           <button style={navStyles.button} onClick={() => toggleForm('profile')}>Edit Profile</button>
         </>
       ) : (
@@ -117,7 +112,6 @@ function App() {
       <NavBar />
       {ComponentToDisplay}
       
-      {/* FLOATING CHAT BUTTON */}
       {isLoggedIn && (
         <FloatingChatButton 
             onClick={() => toggleForm('chatbot')} 
