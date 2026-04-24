@@ -1,23 +1,19 @@
-import React, { useState } from 'react'; // *** REMOVED useEffect ***
+import React, { useState } from 'react';
 
 const BACKEND_URL = 'https://innovative-project-health-tracker-backend-qa58.onrender.com'; 
 
-// Helper to generate User ID (Must match the logic in App.js)
 const generateUserId = (userName) => {
   return userName ? userName.toLowerCase().replace(/\s/g, '-') + '-unique-id' : 'default-user-id';
 }
 
-// *** IMPORTANT: The component now receives 'initialData' from App.js ***
 function UserProfile({ onProfileSave, initialData }) { 
-  // Initialize state using initialData (if provided)
   const [name, setName] = useState(initialData?.name || '');
   const [age, setAge] = useState(initialData?.age || '');
-  const [height, setHeight] = useState(initialData?.height || ''); // cm
-  const [weight, setWeight] = useState(initialData?.weight || ''); // kg
+  const [height, setHeight] = useState(initialData?.height || ''); 
+  const [weight, setWeight] = useState(initialData?.weight || ''); 
   const [gender, setGender] = useState(initialData?.gender || 'female');
   const [goal, setGoal] = useState(initialData?.goal || 'Maintain Weight'); 
   const [loading, setLoading] = useState(false);
-
 
   const handleSubmit = async (e) => { 
     e.preventDefault();
@@ -25,7 +21,6 @@ function UserProfile({ onProfileSave, initialData }) {
 
     const userId = generateUserId(name);
 
-    // 1. Prepare the payload with data types for the backend
     const profilePayload = { 
         userId,
         name, 
@@ -36,7 +31,6 @@ function UserProfile({ onProfileSave, initialData }) {
         goal 
     };
     
-    // Check for essential data before sending
     if (!name || !height || !weight || !age) {
         alert('Please fill in all profile fields.');
         setLoading(false);
@@ -44,7 +38,6 @@ function UserProfile({ onProfileSave, initialData }) {
     }
 
     try {
-        // 2. API Call to MongoDB Backend (Simulated endpoint)
         const response = await fetch(`${BACKEND_URL}/api/profile/save`, {
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' },
@@ -56,15 +49,13 @@ function UserProfile({ onProfileSave, initialData }) {
         if (response.ok) {
             console.log('PROFILE SAVED TO DB:', data);
             alert(`Profile for ${name} saved successfully to MongoDB! Redirecting to Dashboard.`);
-
-            // 3. Call the parent handler to update App.js local state and redirect to dashboard
             onProfileSave(profilePayload); 
         } else {
             alert('Failed to save profile: ' + data.message);
         }
     } catch (error) {
         console.error('Network or Server Error during profile save:', error);
-        alert('Network error. Check your server connection on port 5000.');
+        alert('Network error. Check your server connection.');
     } finally {
         setLoading(false);
     }
@@ -75,7 +66,6 @@ function UserProfile({ onProfileSave, initialData }) {
       <h1>Set Up Your Profile (Health Data)</h1>
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', margin: '10px 0 5px 0', textAlign: 'left' }}>Name:</label>
-        {/* Name is pre-filled/read-only if initialData exists from Login */}
         <input 
             type="text" 
             placeholder="Your Name" 
@@ -83,7 +73,7 @@ function UserProfile({ onProfileSave, initialData }) {
             onChange={(e) => setName(e.target.value)} 
             style={{ width: '100%', padding: '10px', margin: '5px 0 15px 0', border: '1px solid #ddd', borderRadius: '4px', backgroundColor: initialData?.name ? '#eee' : 'white' }} 
             required 
-            readOnly={!!initialData?.name} // Make read-only after first login fetch
+            readOnly={!!initialData?.name} 
         />
         
         <label style={{ display: 'block', margin: '10px 0 5px 0', textAlign: 'left' }}>Gender:</label>
@@ -115,5 +105,5 @@ function UserProfile({ onProfileSave, initialData }) {
     </div>
   );
 }
-export default UserProfile;
 
+export default UserProfile;
