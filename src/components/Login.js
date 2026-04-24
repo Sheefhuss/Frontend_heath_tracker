@@ -7,21 +7,17 @@ function Login({ onFormSwitch, onLoginSuccess }) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // *** REMOVED: const deriveUserId = ... ***
-
   const handleLogin = async (e) => {
     e.preventDefault(); 
     setLoading(true);
 
     try {
-        // 1. Authenticate User
         const authResponse = await fetch(`${BACKEND_URL}/api/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
         });
         
-        // --- CRITICAL CHECK: HANDLE AUTHENTICATION FAILURE ---
         if (!authResponse.ok) {
             const errorData = await authResponse.json();
             alert('Login Failed: ' + (errorData.message || 'Invalid email or password.'));
@@ -29,13 +25,10 @@ function Login({ onFormSwitch, onLoginSuccess }) {
             return; 
         }
 
-        // 2. Auth succeeds, process response
         const authSuccessData = await authResponse.json(); 
         
-        // Retrieve the CORRECT userId from the backend's response
         const currentUserId = authSuccessData.user.userId;
         
-        // 3. Fetch profile data using the confirmed, unique userId
         const profileUrl = `${BACKEND_URL}/api/profile/${currentUserId}`;
         
         const profileResponse = await fetch(profileUrl);
@@ -44,7 +37,6 @@ function Login({ onFormSwitch, onLoginSuccess }) {
         if (profileResponse.ok) {
             alert(`Login successful for ${profileData.name || 'User'}!`);
             
-            // Pass the profile data to App.js 
             onLoginSuccess(profileData);
         } else {
             alert('Login successful, but failed to fetch profile data.');
