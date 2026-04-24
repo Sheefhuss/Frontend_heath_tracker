@@ -17,9 +17,6 @@ function FloatingChatButton({ onClick }) {
         </button>
     );
 }
-
-// --- Inside FloatingChatButton.js ---
-
 const buttonStyles = {
     container: {
         position: 'fixed', 
@@ -29,18 +26,17 @@ const buttonStyles = {
         backgroundColor: '#3498db',
         color: 'white',
         border: 'none',
-        borderRadius: '35px', // Increased border radius slightly for the new size
-        padding: '8px 20px 8px 8px', // Increased padding for better visibility
+        borderRadius: '35px', 
+        padding: '8px 20px 8px 8px', 
         cursor: 'pointer',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
         display: 'flex',
         alignItems: 'center',
         transition: 'all 0.3s ease',
-        // Note: The ':hover' styles should be applied using React's useState/onMouseEnter/onMouseLeave
     },
     icon: {
-        width: '60px',  // *** INCREASED SIZE: 60px ***
-        height: '60px', // *** INCREASED SIZE: 60px ***
+        width: '60px',  
+        height: '60px', 
         borderRadius: '50%',
         marginRight: '10px',
         backgroundColor: 'white', 
